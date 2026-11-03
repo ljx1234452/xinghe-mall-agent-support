@@ -6,7 +6,7 @@
 
 ## 项目来源
 
-本项目基于 [XuXueW/ecommerce-support-agent](https://github.com/XuXueW/ecommerce-support-agent) 的本地副本进行学习和改造；该项目基于 [JoshuaC215/agent-service-toolkit](https://github.com/JoshuaC215/agent-service-toolkit) 进行二次开发。保留仓库中的 [MIT 许可证及原版权声明](LICENSE)。
+(https://github.com/JoshuaC215/agent-service-toolkit) 进行二次开发。保留仓库中的 [MIT 许可证及原版权声明](LICENSE)。
 
 以下是上游电商客服项目的功能和评测说明，其中的功能、评测数据与部署方式需结合本地配置及后续实际验证理解。
 

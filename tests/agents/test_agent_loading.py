@@ -14,9 +14,8 @@ class TestAgentLoading:
     @pytest.mark.asyncio
     async def test_load_agent_static_agent(self):
         """Test loading a static agent (no-op)."""
-        # Static agents don't need loading
-        await load_agent("chatbot")
-        # Should not raise any exceptions
+        with patch.dict(agents, {"test-static-agent": Mock(graph_like=object())}):
+            await load_agent("test-static-agent")
 
     @pytest.mark.asyncio
     async def test_load_agent_lazy_agent(self):
@@ -38,8 +37,13 @@ class TestAgentLoading:
 
     def test_get_agent_static_agent(self):
         """Test getting a static agent."""
-        agent = get_agent("chatbot")
-        assert agent is not None
+        graph = object()
+        with patch.dict(agents, {"test-static-agent": Mock(graph_like=graph)}):
+            assert get_agent("test-static-agent") is graph
+
+    def test_only_customer_support_is_registered(self):
+        """The application exposes only the customer-support agent."""
+        assert set(agents) == {"customer-support"}
 
     def test_get_agent_lazy_agent_not_loaded(self):
         """Test getting a lazy agent that hasn't been loaded."""
